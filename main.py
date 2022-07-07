@@ -2,7 +2,7 @@ import pyglet
 
 window = pyglet.window.Window(fullscreen=False)
 
-particule = pyglet.resource.image('particule.jpg')
+particule = pyglet.resource.image('particule.png')
 
 
 @window.event
