@@ -2,6 +2,7 @@ import pyglet
 
 window = pyglet.window.Window(fullscreen=False)
 
+batch = pyglet.graphics.Batch()
 particule = pyglet.resource.image('particule.png')
 
 
