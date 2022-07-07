@@ -1,15 +1,16 @@
 import pyglet
+import graphics
+from particle import Particle
 
 window = pyglet.window.Window(fullscreen=False)
 
-batch = pyglet.graphics.Batch()
-particule = pyglet.resource.image('particule.png')
+particle1 = Particle()
 
 
 @window.event
 def on_draw():
     window.clear()
-    particule.blit(0, 0)
+    particle1.draw()
 
 
 pyglet.app.run()
