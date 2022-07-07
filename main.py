@@ -10,7 +10,7 @@ particle1 = Particle()
 @window.event
 def on_draw():
     window.clear()
-    particle1.draw()
+    particle1.image.draw()
 
 
 pyglet.app.run()
