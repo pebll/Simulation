@@ -3,7 +3,7 @@ import pyglet
 window = pyglet.window.Window(fullscreen=False)
 
 batch = pyglet.graphics.Batch()
-particule = pyglet.resource.image('particule.png')
+particule = pyglet.resource.image('particle.png')
 
 
 @window.event
