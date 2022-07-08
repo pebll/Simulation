@@ -1,3 +1,5 @@
+#Partikelklasse 
+
 import graphics
 import pyglet
 
