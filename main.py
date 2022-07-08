@@ -4,7 +4,11 @@ import graphics
 from particle import Particle
 import math as m
 def velocityAt(x,y): #definiert das geschwindigkeitsfeld. das wäre das was wir in ströle errechnen täten
-    return (0.2*(x^2) + 0.3*(y^2), -0.4*(x^2) - 0.2)
+    #return(1,0.5)
+    return (x,y)
+    return (x , m.sin(x))
+    return (0.2*m.pow(x-4,2) + 0.2*m.pow(y-4,2),  0.2*m.pow(y-4,2))#0.2*m.pow(y-4,2))
+    return (m.sqrt(2 - 0.02*m.pow(y,2)),m.sqrt(2 - 0.02*m.pow(y,2)))
 
 window = pyglet.window.Window(fullscreen=False)
 

@@ -13,8 +13,8 @@ class Fieldmanager():
         
 
 
-        #self.velocity[0].fill(3.2) #initialize the ux values
-        #self.velocity[1].fill(-0.3) #initialize the uy values
+        #self.velocity[0].fill(1) #initialize the ux values
+        #self.velocity[1].fill(1) #initialize the uy values
         print(self.velocity[0])        
         print(self.velocity[1])
         self.arrowsprites = [] #initialize the arrows drawings. The list becomes a 2D array later
@@ -28,7 +28,13 @@ class Fieldmanager():
         for i in range(self.FIELDSIZE):
             for j in range(self.FIELDSIZE):
                 ux,uy = self.velocity[0][i][j],self.velocity[1][i][j]
-                angle = math.degrees(math.atan(ux/uy))
                 abs = math.sqrt(math.pow(ux,2)+math.pow(uy,2))
+                if(uy != 0):
+                    angle = math.degrees(math.atan(ux/uy))
+                else:
+                    angle = 90; #egal
+  
+                
+                
                 self.arrowsprites[i][j].update(50*i,50*j,angle,abs)#adapt arrow size, orientation related to values 
     
