@@ -4,6 +4,9 @@ from particlemanager import Particlemanager
 from fieldmanager import Fieldmanager
 import math as m
 def velocityAt(x,y): #definiert das geschwindigkeitsfeld. das wäre das was wir in ströle errechnen täten
+    return (m.sqrt(1000+m.pow(x,2)-m.pow(y,2)),m.pow(x,2))
+    #return (2,200)
+    return(-0.1*m.pow(x-20,3),m.pow(x,2)) #nice :)
     #return(1*m.pow(x,2),0.5)
     #return (x,y)
     #return (x , m.sin(x))
