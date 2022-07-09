@@ -36,7 +36,7 @@ class Fieldmanager():
         for i in range(self.FIELDSIZE):
             for j in range(self.FIELDSIZE):
                 ux, uy = self.velocity[0][i][j], self.velocity[1][i][j]
-                abs = 0.001 * math.sqrt(math.pow(ux, 2)+math.pow(uy, 2))
+                abs = 0.1 * math.sqrt(math.pow(ux, 2)+math.pow(uy, 2))
                 if(ux != 0):
                     angle = math.degrees(math.atan(uy/ux))
                 elif uy > 0:
