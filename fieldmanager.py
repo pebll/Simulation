@@ -43,29 +43,6 @@ class Fieldmanager():
                 if(uy < 0):
                     angle = 180-math.degrees(math.atan(-ux/uy)) if (uy<0) else math.degrees(math.atan(10000000*ux))
                 
-                """
-                if(ux != 0):
-                    angle = math.degrees(math.atan(uy/ux))
-                elif uy > 0:
-                    angle = 0
-                else:
-                    angle = 180
-                if uy == 0 and ux > 0:
-                    angle = 90
-                elif uy == 0 and ux < 0:
-                    angle = - 90
-
-                if ux > 0 and uy < 0:
-                    angle = -angle + 90
-
-                elif ux > 0 and uy > 0:
-                    angle = -angle + 90
-
-                if ux < 0 and uy < 0:
-                    angle = -angle - 90
-                elif ux < 0 and uy > 0:
-                    angle = -angle - 90
-                """
                 # adapt arrow size, orientation related to values
                 self.arrowsprites[i][j].update(
                     self.DISTANCE*i, self.DISTANCE*j, angle, 0.001 *arrowlength)
