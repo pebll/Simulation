@@ -9,10 +9,11 @@ def velocityAt(x, y):  # definiert das geschwindigkeitsfeld. das wäre das was w
     center = (25, 25)
     vector = getVectorToCenter(center, (x, y), 5)
     dist = m.pow(vector[0], 2) + m.pow(vector[1], 2)
-    return(-vector[1] - 0.005*dist, vector[0] + 0.005*dist)
+    return(-vector[1] - 0.000*dist, vector[0] + 0.000*dist)
 
     # return (m.sqrt(1000+m.pow(x, 2)-m.pow(y, 2)), m.pow(x, 2))
-    # return (50, -50)
+    #return m.sqrt(m.pow(x-25,2)+m.pow(y-25,2)) * m.sin(0.5*x), m.sqrt(m.pow(x-25,2)+m.pow(y-25,2)) * m.sin(0.5*y)
+    #return(-30*m.cos(33-x*10) + 100*m.sin(y^2*4) , -(y-40)*(x-20)*2)
     # return(-0.1*m.pow(x-20, 3), m.pow(x, 2))  # nice :)
     # return(1*m.pow(x,2),0.5)
     # return (x,y)
@@ -32,8 +33,9 @@ batchOfParticles = pyglet.graphics.Batch()
 field = Fieldmanager(50, 15, batchOfArrows, velocityAt)
 #particlepositions = ((250, 0), (250, 50))
 particlepositions = []
-for i in range(0, 375, 2):
-    particlepositions.append((375, i))
+for x in range(0, 700, 40):
+    for y in range(0, 700, 40):
+        particlepositions.append((x, y))
 particleswarm = Particlemanager(particlepositions, batchOfParticles, field)
 
 
