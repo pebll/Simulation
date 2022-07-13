@@ -2,6 +2,7 @@
 
 import pyglet
 import math as m
+import random
 
 
 class Particlemanager:
@@ -12,11 +13,14 @@ class Particlemanager:
         image = pyglet.resource.image("particle.png")
         image.anchor_x, image.anchor_y = image.width/2, image.height/2
         for i in range(len(positions)):
-            self.particles.append(pyglet.sprite.Sprite(
-                image, positions[i][0], positions[i][1], batch=passedbatch))
-            self.accelerations.append(0)
+            self.particles.append([pyglet.sprite.Sprite(
+                image, positions[i][0], positions[i][1], batch=passedbatch), [0, 0]])
+
         for element in self.particles:
-            element.scale = 0.1
+            element[0].scale = 0.1
+            if random.random() > 0.99:
+                element[0].scale = 0.3
+            element[0].scale = random.random()*2
 
     def update(self, deltatime):
         ux, uy = self.fieldmanager.velocity[0], self.fieldmanager.velocity[1]
@@ -24,17 +28,17 @@ class Particlemanager:
         # which velocity gets the particle? it has to be located in the grid
 
         for element in self.particles:
-            x = element.position[0]
-            y = element.position[1]
+            x = element[0].position[0]
+            y = element[0].position[1]
             iElement = int(x/self.fieldmanager.DISTANCE)
             jElement = int(y/self.fieldmanager.DISTANCE)
             iElement = max(iElement, 0)
             iElement = min(iElement, self.fieldmanager.FIELDSIZE-1)
             jElement = max(jElement, 0)
             jElement = min(jElement, self.fieldmanager.FIELDSIZE-1)
-            # if jElement < 1 | iElement < 1 | jElement > self.fieldmanager.FIELDSIZE - 1 | iElement > self.fieldmanager.FIELDSIZE-1:
-            #    print("Elemet ausser sicht")
 
-            # else:
-            element.update(
-                x + deltatime * ux[iElement][jElement], y + deltatime * uy[iElement][jElement])
+            element[1][0] += deltatime * ux[iElement][jElement]
+            element[1][1] += deltatime * uy[iElement][jElement]
+            element[0].update(x + element[1][0], y + element[1][1])
+            color = min(255, 25 * (abs(element[1][0])+abs(element[1][1])))
+            element[0].color = (color, color, color)
