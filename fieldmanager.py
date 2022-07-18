@@ -36,13 +36,17 @@ class Fieldmanager():
         for i in range(self.FIELDSIZE):
             for j in range(self.FIELDSIZE):
                 ux, uy = self.velocity[0][i][j], self.velocity[1][i][j]
-                arrowlength =  math.sqrt(math.pow(ux, 2)+math.pow(uy, 2)) #betrag vektor
-                
+                arrowlength = math.sqrt(
+                    math.pow(ux, 2)+math.pow(uy, 2))  # betrag vektor
+
                 if(uy >= 0):
-                    angle = math.degrees(math.atan(ux/uy)) if (uy>0) else math.degrees(math.atan(10000000*ux))
+                    angle = math.degrees(
+                        math.atan(ux/uy)) if (uy > 0) else math.degrees(math.atan(10000000*ux))
                 if(uy < 0):
-                    angle = 180-math.degrees(math.atan(-ux/uy)) if (uy<0) else math.degrees(math.atan(10000000*ux))
-                
+                    angle = 180 - \
+                        math.degrees(math.atan(-ux/uy)) if (uy <
+                                                            0) else math.degrees(math.atan(10000000*ux))
+
                 # adapt arrow size, orientation related to values
                 self.arrowsprites[i][j].update(
-                    self.DISTANCE*i, self.DISTANCE*j, angle, 0.001 *arrowlength)
+                    self.DISTANCE*i, self.DISTANCE*j, angle, 0.1 * arrowlength)
